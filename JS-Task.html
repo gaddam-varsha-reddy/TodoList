@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+ul li {
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px; 
+}
+
+ul li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+.header {
+  background-color:#0096FF;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+  height:150px;
+}
+
+input {
+  width: 75%;
+  float: left;
+  font-size: 26px;
+}
+
+.Btn {
+  padding:2px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  font-size: 26px;
+
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <p id="he">List Of Todo Task: 6</p>
+  <input type="text" id="myInput">
+  <span onclick="ftn()" class="Btn">Add</span>
+</div>
+
+<ul id="mul">
+  <li>BreakFast</li>
+  <li>Excercise</li>
+  <li>Attend Party</li>
+  <li>Lunch</li>
+  <li>Read a book</li>
+  <li>Dinner</li>
+</ul>
+
+<script>
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+function ftn() {
+  var li = document.createElement("li");
+  var v = document.getElementById("myInput").value;
+  var txt = document.createTextNode(v);
+  li.appendChild(txt);
+  if (v === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("mul").appendChild(li);
+    const mc = document.getElementsByTagName("li"); 
+    document.getElementById("he").innerHTML ="List Of Todo Tasks : "+ mc.length;
+  }
+  document.getElementById("myInput").value = "";
+
+}
+</script>
+
+</body>
+</html>
